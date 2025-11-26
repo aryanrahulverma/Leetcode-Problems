@@ -1,25 +1,16 @@
-# Last updated: 11/25/2025, 10:18:53 PM
+# Last updated: 11/25/2025, 10:40:55 PM
 class Solution:
-    def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        res = max(piles)
-
-        l, r = 1, res
-
-        while l <= r:
-            
-            m = (l + r) // 2
-            calc = 0
-
-            for i in piles:
-                calc += (i + m - 1) // m
-
-            if calc <= h:
-                r = m - 1
-                res = m
-
-            else:
-                l = m + 1
-    
-        return res
-            
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        l, r = 0, n - 1
         
+        while l < r:
+            m = (l + r) // 2
+
+            if nums[m] > nums[r]: 
+                l = m + 1
+            
+            else:
+                r = m
+        
+        return nums[r]

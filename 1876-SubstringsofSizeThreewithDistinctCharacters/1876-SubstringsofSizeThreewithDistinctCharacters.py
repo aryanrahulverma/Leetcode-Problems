@@ -1,19 +1,37 @@
-# Last updated: 12/6/2025, 9:17:21 PM
-1class Solution:
-2    def countGoodSubstrings(self, s: str) -> int:
-3        cnt = 0
-4
-5        if len(s) < 3:
-6            return 0
-7
-8        for i in range(0, len(s) - 2):
-9            a = s[i]
-10            b = s[i + 1]
-11            c = s[i + 2]
-12
-13            if a!=b and a!=c and b!=c:
-14                cnt += 1
-15            
-16        return cnt
+# Last updated: 12/6/2025, 9:57:18 PM
+1# Definition for singly-linked list.
+2# class ListNode:
+3#     def __init__(self, x):
+4#         self.val = x
+5#         self.next = None
+6
+7class Solution:
+8    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+9        indexmp = {}
+10        ind = 0
+11
+12        if not head:
+13            return None
+14
+15        slow = head
+16        indexmp[slow] = 0
 17
-18
+18        while slow and slow.next:
+19            curr = slow
+20            slow = slow.next
+21            if slow not in indexmp:
+22                indexmp[slow] = ind
+23                ind += 1
+24                
+25            else:
+26                return slow
+27            
+28        return None
+29            
+30
+31            
+32
+33        
+34
+35
+36
